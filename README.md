@@ -62,4 +62,4 @@ An easily deployable WSGI Python Webserver designed with enhanced security in mi
    ```
 
 ## Usage
-Once the server is running, you can access it by navigating to http://localhost:8000 in your web browser. You should see a welcome message indicating that Tengu is running.
+Once the server is running, you can access it by navigating to http://localhost:5000 in your web browser. You should see a welcome message indicating that Tengu is running.
