@@ -1,3 +1,4 @@
+<div align="center"><img src="https://i.pinimg.com/originals/9b/1e/5c/9b1e5c0851ffcd627718382eb1adaec0.gif" width='600'></div>
 <h1 align="center">Tengu (天狗)</h1>
 An easily deployable WSGI Python Webserver designed with enhanced security in mind.
 
