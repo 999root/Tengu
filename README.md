@@ -19,9 +19,9 @@ An easily deployable WSGI Python Webserver designed with enhanced security in mi
 
 ## Installation
 
-### Using Docker
+### Using Docker Build
 
-1. **Clone the repository:**
+1. ***Clone the repository:***
 
    ```bash
    git clone https://github.com/yourusername/tengu.git
@@ -38,28 +38,12 @@ An easily deployable WSGI Python Webserver designed with enhanced security in mi
    docker run -d -p 5000:5000 tengu
    ```
 
-## From Source Code
-1. ***Clone the repository:***
-   ```bash
-   git clone https://github.com/999root/tengu.git
-   cd tengu
-   ```
+### Docker Compose
 
-2. ***Create a virtual environment (optional but recommended):***
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate # On Windows use 'venv/Scripts/activate'
-   ```
-
-3. ***Install the required packages:***
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. ***Run the server:***
-   ```bash
-   py server.py
-   ```
+***Run Docker Compose***
+```bash
+docker compose up --build -d
+```
 
 ## Usage
 Once the server is running, you can access it by navigating to http://localhost:5000 in your web browser. You should see a welcome message indicating that Tengu is running.
