@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit {{ filename }}</title>
+
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <!-- Custom Catppuccin Mocha theme for CodeMirror (see custom CSS below) -->
+
+    <style>
+        /* Catppuccin Mocha Color Palette */
+        :root {
+            --bg-color: #1e1e2e;
+            --fg-color: #cdd6f4;
+            --accent-color: #cba6f7;
+            --editor-bg: #181825;
+            --editor-text: #cdd6f4;
+            --editor-line-num-bg: #1e1e2e;
+            --editor-line-num: #6e6c7e;
+            --editor-gutter-bg: #181825;
+            --editor-cursor-color: #f38ba8;
+            --button-bg: #6c7086;
+            --button-text: #f9e2af;
+            --button-hover-bg: #b4befe;
+            --link-color: #89dceb;
+        }
+
+        /* General page styling */
+        body {
+            background-color: var(--bg-color);
+            color: var(--fg-color);
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: var(--accent-color);
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--button-hover-bg);
+            color: var(--bg-color);
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .editor-container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: var(--editor-bg);
+            border-radius: 8px;
+        }
+
+        /* CodeMirror custom styling */
+        .CodeMirror {
+            height: auto;
+            border: 1px solid #555;
+            background-color: var(--editor-bg);
+            color: var(--editor-text);
+        }
+
+        .CodeMirror-lines {
+            background-color: var(--editor-bg);
+        }
+
+        .CodeMirror-gutters {
+            background-color: var(--editor-gutter-bg);
+            border-right: 1px solid #333;
+        }
+
+        .CodeMirror-linenumbers {
+            background-color: var(--editor-line-num-bg);
+            color: var(--editor-line-num);
+        }
+
+        .CodeMirror-linenumber {
+            color: var(--editor-line-num);
+        }
+
+        .CodeMirror-cursor {
+            border-left: 1px solid var(--editor-cursor-color);
+        }
+
+        .CodeMirror-selected {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <h1>Editing {{ filename }}</h1>
+        <form method="POST">
+            <!-- Textarea that will be replaced by CodeMirror -->
+            <textarea id="code" name="content">{{ content }}</textarea><br>
+            <button type="submit">Save</button>
+        </form>
+        <a href="{{ url_for('index') }}">Back to file list</a>
+    </div>
+
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <!-- CodeMirror HTML mode -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/htmlmixed/htmlmixed.min.js"></script>
+    <!-- CodeMirror JS for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/closebrackets.min.js"></script>
+    <!-- CodeMirror keymap to allow Tab/Shift-Tab for indentation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/keymap/sublime.min.js"></script>
+
+    <script>
+        // Initialize CodeMirror on the textarea
+        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            mode: "htmlmixed",
+            lineNumbers: true,
+            theme: "default",  // We are using custom theme via CSS instead
+            autoCloseBrackets: true,
+            tabSize: 4,
+            indentWithTabs: true,
+            lineWrapping: true,
+            keyMap: "sublime", // Allows Tab for indent and Shift-Tab for un-indent
+        });
+    </script>
+</body>
+</html>

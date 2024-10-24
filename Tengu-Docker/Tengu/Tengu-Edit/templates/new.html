@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New File</title>
+    <!-- Link to Catppuccin Mocha CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='catppuccin_mocha.css') }}">
+</head>
+<body>
+    <div class="content-container">
+        <h1>Create New HTML File</h1>
+        <form method="POST">
+            <label for="filename">Filename (without .html):</label><br>
+            <input type="text" name="filename" id="filename"><br><br>
+            <button type="submit">Create</button>
+        </form>
+        <a href="{{ url_for('index') }}">Back to file list</a>
+    </div>
+</body>
+</html>

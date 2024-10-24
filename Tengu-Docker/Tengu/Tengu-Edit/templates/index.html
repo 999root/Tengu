@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Editor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='catppuccin_mocha.css') }}">
+</head>
+<body>
+    <div class="content-container">
+        <h1>HTML File Editor</h1>
+        <a href="{{ url_for('new_file', subpath=subpath) }}">Create New HTML File</a>
+        <a href="{{ url_for('new_directory', subpath=subpath) }}">Create New Directory</a>
+        
+        {% if subpath %}
+        <a href="{{ url_for('index', subpath=subpath|dirname) }}">Go Up</a>
+        {% endif %}
+
+        <h2>Directories</h2>
+        <ul>
+            {% for dir in directories %}
+            <li>
+                <a href="{{ url_for('index', subpath=subpath + '/' + dir) }}">{{ dir }}/</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Files</h2>
+        <ul>
+            {% for file in files %}
+            <li>
+                <a href="{{ url_for('edit_file', filepath=subpath + '/' + file) }}">{{ file }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

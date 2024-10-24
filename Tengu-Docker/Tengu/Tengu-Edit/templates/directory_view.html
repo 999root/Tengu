@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Directory - {{ subpath or '/' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='catppuccin_mocha.css') }}">
+</head>
+<body>
+    <div class="content-container">
+        <h1>Viewing Directory: {{ subpath or '/' }}</h1>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Navigation Link to Index -->
+        <a href="{{ url_for('index', subpath='') }}">Back to Home</a>
+
+        {% if parent_dir %}
+            <a href="{{ url_for('index', subpath=parent_dir) }}">Go Up</a>
+        {% endif %}
+
+        <h2>Directories</h2>
+        <ul>
+            {% for dir in directories %}
+            <li>
+                <a href="{{ url_for('index', subpath=(subpath + '/' + dir).lstrip('/')) }}">{{ dir }}/</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Files</h2>
+        <ul>
+            {% for file in files %}
+            <li>
+                <a href="{{ url_for('edit_file', filepath=(subpath + '/' + file).lstrip('/')) }}">{{ file }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Create</h2>
+        <ul>
+            <li><a href="{{ url_for('new_file', subpath=subpath) }}">Create New File</a></li>
+            <li><a href="{{ url_for('new_directory', subpath=subpath) }}">Create New Directory</a></li>
+        </ul>
+    </div>
+</body>
+</html>
