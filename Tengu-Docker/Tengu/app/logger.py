@@ -18,7 +18,8 @@ def log_request(response):
         "method": request.method,
         "path": request.path,
         "status_code": response.status_code,
-        "user_agent": request.headers.get("User-Agent")
+        "user_agent": request.headers.get("User-Agent"),
+        "referrer": request.headers.get("Referer")
     }
 
     # Write the log entry to the .json log file

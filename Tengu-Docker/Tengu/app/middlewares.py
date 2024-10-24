@@ -1,10 +1,13 @@
 import requests
 from flask import request, abort
 
+from .lists import load
+
 # Blocked lists
-blocked_ips = ["192.168.1.10", "10.0.0.1"]
-blocked_asns = [12345, 54321]
-blocked_user_agents = ["bad-crawler", "malicious-bot"]
+blocked_ips = load.IP.load()
+blocked_asns = load.ASN.load()
+blocked_user_agents = load.UA.load()
+blocked_referers = load.REF.load()
 
 # Function to block IPs
 def is_ip_blocked(ip):
@@ -40,10 +43,18 @@ def is_user_agent_blocked(user_agent):
             return True
     return False
 
+# Function to block Referers
+def is_referer_blocked(referer):
+    for blocked_referer in blocked_referers:
+        if blocked_referer.lower() in referer.lower():
+            return True
+    return False
+
 # Middleware to block requests
 def block_requests():
     ip = request.remote_addr
     user_agent = request.headers.get("User-Agent", "")
+    referer = request.headers.get("Referer", "")
     
     if is_ip_blocked(ip):
         abort(403, description="Access denied: IP blocked")
@@ -53,3 +64,6 @@ def block_requests():
     
     if is_user_agent_blocked(user_agent):
         abort(403, description="Access denied: User Agent blocked")
+    
+    if is_referer_blocked(referer):
+        abort(403, description="Access denied: Referer blocked")
