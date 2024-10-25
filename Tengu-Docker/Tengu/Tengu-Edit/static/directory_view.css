@@ -1,0 +1,142 @@
+/* Catppuccin Mocha Color Palette */
+:root {
+    --bg-color: #1e1e2e;
+    --fg-color: #cdd6f4;
+    --accent-color: #cba6f7;
+    --editor-bg: #181825;
+    --editor-text: #cdd6f4;
+    --editor-line-num-bg: #1e1e2e;
+    --editor-line-num: #6e6c7e;
+    --editor-gutter-bg: #181825;
+    --editor-cursor-color: #f38ba8;
+    --button-bg: #6c7086;
+    --button-text: #f9e2af;
+    --button-hover-bg: #b4befe;
+    --link-color: #89dceb;
+    --card-bg-color: #2e2e3e;
+    --card-border-color: #444455;
+}
+
+/* General page styling */
+body {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: var(--accent-color);
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+}
+
+.content-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: var(--editor-bg);
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.section-card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.flashes {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background-color: rgba(166, 227, 161, 1);
+    color: black;
+}
+
+button, a {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px 0;
+    font-size: 1rem;
+    color: var(--button-text);
+    background-color: var(--button-bg);
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover, a:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--bg-color);
+}
+
+.navbar, .navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #a6e3a1;
+}
+
+/* CodeMirror custom styling */
+.CodeMirror {
+    height: auto;
+    border: 1px solid #555;
+    background-color: var(--editor-bg);
+    color: var(--editor-text);
+    border-radius: 8px;
+}
+
+.CodeMirror-gutters {
+    background-color: var(--editor-gutter-bg);
+    border-right: 1px solid #333;
+}
+
+.CodeMirror-linenumber {
+    color: var(--editor-line-num);
+}
+
+.CodeMirror-cursor {
+    border-left: 1px solid var(--editor-cursor-color);
+}
+
+.CodeMirror-selected {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}

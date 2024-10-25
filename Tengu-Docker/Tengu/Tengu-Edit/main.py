@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import os
+import shutil
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Needed for flashing messages
@@ -99,6 +100,32 @@ def edit_file(filepath):
         content = f.read()
 
     return render_template('editor.html', filename=os.path.basename(filepath), content=content)
+
+
+@app.route('/delete_file/<path:filepath>', methods=['POST'])
+def delete_file(filepath):
+    """Delete an existing file."""
+    file_path = os.path.join(BASE_DIR, filepath)
+    try:
+        os.remove(file_path)
+        flash(f"File '{filepath}' deleted successfully.", 'success')
+    except Exception as e:
+        flash(f"Failed to delete file: {e}", 'error')
+    
+    return redirect(url_for('index', subpath=os.path.dirname(filepath)))
+
+
+@app.route('/delete_directory/<path:dirpath>', methods=['POST'])
+def delete_directory(dirpath):
+    """Delete an existing directory."""
+    dir_path = os.path.join(BASE_DIR, dirpath)
+    try:
+        shutil.rmtree(dir_path)
+        flash(f"Directory '{dirpath}' deleted successfully.", 'success')
+    except Exception as e:
+        flash(f"Failed to delete directory: {e}", 'error')
+    
+    return redirect(url_for('index', subpath=os.path.dirname(dirpath)))
 
 
 if __name__ == '__main__':
