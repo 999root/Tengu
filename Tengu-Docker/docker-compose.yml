@@ -6,3 +6,4 @@ services:
     ports:
       - "5000:5000" # Tengu Webserver
       - "8080:8080" # Tengu Editor
+      - "9000:9000" # Tengu Security

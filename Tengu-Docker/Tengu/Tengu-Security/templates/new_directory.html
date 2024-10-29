@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Directory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='catppuccin_mocha.css') }}">
+</head>
+<body>
+    <div class="content-container">
+        <h1>Create New Directory</h1>
+        <form method="POST">
+            <label for="directory_name">Directory Name:</label><br>
+            <input type="text" name="directory_name" id="directory_name"><br><br>
+            <button type="submit">Create</button>
+        </form>
+        <a href="{{ url_for('index', subpath=subpath) }}">Back to file list</a>
+    </div>
+</body>
+</html>
