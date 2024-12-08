@@ -1,0 +1,99 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Navigation Styling */
+nav {
+    background-color: #111;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #ccc;
+}
+
+/* Dashboard Container */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    max-width: 900px;
+}
+
+/* Section Styling */
+.section {
+    background-color: #111;
+    border: 1px solid #333;
+    margin: 1rem 0;
+    border-radius: 5px;
+    padding: 1.5rem;
+}
+
+.section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+.section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.section ul li {
+    margin: 0.5rem 0;
+}
+
+.section ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border: 1px solid #333;
+    border-radius: 3px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.section ul li a:hover {
+    background: #333;
+    color: #ccc;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    margin: 2rem auto;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}

@@ -1,0 +1,48 @@
+<html>
+
+    <head>
+        <title>Security Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    </head>
+
+    <body>
+
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#webserver">Webserver Management</a></li>
+                <li><a href="#firewall">Firewall Management</a></li>
+            </ul>
+        </nav>
+    
+        <div class="dashboard">
+
+            <!-- Webserver Section -->
+            <div class="section" id="webserver">
+                <h2>Manage Webserver Files</h2>
+                <ul>
+                    <li><a href="/upload">Upload Files</a></li>
+                    <li><a href="/delete">Delete Files</a></li>
+                    <li><a href="/list">View All Files</a></li>
+                </ul>
+            </div>
+    
+            <!-- Firewall Section -->
+            <div class="section" id="firewall">
+                <h2>Manage Firewall</h2>
+                <ul>
+                    <li><a href="/rules">View Rules</a></li>
+                    <li><a href="/add-rule">Add New Rule</a></li>
+                    <li><a href="/logs">Firewall Logs</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    
+        <footer>
+            <p>Security Dashboard © 2024 | <a href="/">Back to Top</a></p>
+        </footer>
+
+    </body>
+
+</html>
